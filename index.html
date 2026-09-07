@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HomeSync — Smart Home Dashboard</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- CSS-only mobile menu toggle (no JS) -->
+<input type="checkbox" id="menuToggle" class="menu-toggle-input" />
+<label for="menuToggle" class="mobile-menu-btn" aria-label="Open menu">&#9776;</label>
+<label for="menuToggle" class="menu-overlay"></label>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="profile">
+      <img src="" alt="" class="avatar" />
+      <div>
+        <p class="profile-hi">Welcome back</p>
+        <p class="profile-name">User:)</p>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-item active"><img src="images/nav/window.png" alt="" /> Dashboard</a>
+      <a class="nav-item"><img src="images/nav/room.png" alt="" /> Rooms</a>
+      <a class="nav-item"><img src="images/nav/history.png" alt="" /> Recent</a>
+      <a class="nav-item"><img src="images/nav/save.png" alt="" /> Bookmark</a>
+      <a class="nav-item"><img src="images/nav/notification.png" alt="" /> Notification</a>
+      <a class="nav-item"><img src="images/nav/download.png" alt="" /> Downloaded</a>
+      <a class="nav-item"><img src="images/nav/faq.png" alt="" /> Support</a>
+      <a class="nav-item"><img src="images/nav/settings.png" alt="" /> Settings</a>
+      <a class="nav-item"><span>☀️</span> Light Mode</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="content">
+
+      <div class="col-left">
+        <h2 class="page-title">My Devices</h2>
+
+        <div class="device-grid">
+
+          <div class="device-card">
+            <div class="device-card-top">
+              <img src="images/monitor.png" class="device-icon" alt="" />
+              <div class="toggle on"><div class="toggle-dot"></div></div>
+            </div>
+            <div>
+              <div class="device-name">Smart TV</div>
+              <div class="device-status">Active for 3 hours</div>
+            </div>
+            <div class="device-card-bottom"><span>—</span><span class="device-power">5kWh</span></div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-card-top">
+              <img src="images/speaker.png" class="device-icon" alt="" />
+              <div class="toggle on"><div class="toggle-dot"></div></div>
+            </div>
+            <div>
+              <div class="device-name">Speaker</div>
+              <div class="device-status">Active for 4 hours</div>
+            </div>
+            <div class="device-card-bottom"><span>—</span><span class="device-power">5kWh</span></div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-card-top">
+              <img src="images/router.png" class="device-icon" alt="" />
+              <div class="toggle on"><div class="toggle-dot"></div></div>
+            </div>
+            <div>
+              <div class="device-name">Router</div>
+              <div class="device-status">Active for 3 hours</div>
+            </div>
+            <div class="device-card-bottom"><span>—</span><span class="device-power">5kWh</span></div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-card-top">
+              <img src="images/hotspot.png" class="device-icon" alt="" />
+              <div class="toggle on"><div class="toggle-dot"></div></div>
+            </div>
+            <div>
+              <div class="device-name">WiFi</div>
+              <div class="device-status">Active for 3 hours</div>
+            </div>
+            <div class="device-card-bottom"><span>—</span><span class="device-power">5kWh</span></div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-card-top">
+              <img src="images/water-heater.png" class="device-icon" alt="" />
+              <div class="toggle on"><div class="toggle-dot"></div></div>
+            </div>
+            <div>
+              <div class="device-name">Heater</div>
+              <div class="device-status">Active for 3 hours</div>
+            </div>
+            <div class="device-card-bottom"><span>—</span><span class="device-power">5kWh</span></div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-card-top">
+              <img src="images/plug.png" class="device-icon" alt="" />
+              <div class="toggle on"><div class="toggle-dot"></div></div>
+            </div>
+            <div>
+              <div class="device-name">Socket</div>
+              <div class="device-status">Active for 3 hours</div>
+            </div>
+            <div class="device-card-bottom"><span>—</span><span class="device-power">5kWh</span></div>
+          </div>
+
+        </div>
+
+        <div class="row-2">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Usage Status</h3>
+              <div class="dropdown-btn"><span>Today</span> <span>&#9662;</span></div>
+            </div>
+            <div class="stats-row">
+              <div><span class="stat-label">Total Spend</span><strong>30.80 kW</strong></div>
+              <div><span class="stat-label">Total Hours</span><strong>11 h</strong></div>
+              <div><span class="stat-label">Highest Usage</span><strong>3.5 kW</strong></div>
+            </div>
+            <div class="bar-chart">
+              <div class="bar-col"><div class="bar" style="height:60%"></div><span class="bar-label">9.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:66%"></div><span class="bar-label">10.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:80%"></div><span class="bar-label">11.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:86%"></div><span class="bar-label">12.00</span></div>
+              <div class="bar-col"><div class="bar max" style="height:100%"></div><span class="bar-label">13.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:83%"></div><span class="bar-label">14.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:77%"></div><span class="bar-label">15.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:91%"></div><span class="bar-label">16.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:69%"></div><span class="bar-label">17.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:89%"></div><span class="bar-label">18.00</span></div>
+              <div class="bar-col"><div class="bar" style="height:80%"></div><span class="bar-label">19.00</span></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head wrap">
+              <h3>APPLIANCES</h3>
+              <div class="room-tabs hide-scrollbar">
+                <span class="room-tab active">All</span>
+                <span class="room-tab">Lounge</span>
+                <span class="room-tab">Hall</span>
+                <span class="room-tab">Bedroom</span>
+                <span class="room-tab">Kitchen</span>
+                <span class="room-tab">Bathroom</span>
+              </div>
+            </div>
+            <div class="appliance-grid hide-scrollbar">
+              <div class="stack">
+                <div class="toggle-row"><span class="appliance-name">TV set</span><div class="mini-toggle on"><div class="mini-toggle-dot"></div></div></div>
+                <div class="toggle-row"><span class="appliance-name">Stereo system</span><div class="mini-toggle"><div class="mini-toggle-dot"></div></div></div>
+                <div class="toggle-row"><span class="appliance-name">Playstation 4</span><div class="mini-toggle on"><div class="mini-toggle-dot"></div></div></div>
+                <div class="toggle-row"><span class="appliance-name">Computer</span><div class="mini-toggle"><div class="mini-toggle-dot"></div></div></div>
+                <div class="toggle-row"><span class="appliance-name">Stereo system</span><div class="mini-toggle"><div class="mini-toggle-dot"></div></div></div>
+                <div class="toggle-row"><span class="appliance-name">Play Station 4</span><div class="mini-toggle on"><div class="mini-toggle-dot"></div></div></div>
+                <div class="toggle-row"><span class="appliance-name">Computer</span><div class="mini-toggle"><div class="mini-toggle-dot"></div></div></div>
+              </div>
+              <div class="stack">
+                <div class="slider-row"><span class="appliance-name">Light fix...</span><div class="slider-controls"><div class="mini-slider-track"><div class="mini-slider-fill" style="width:50%"></div></div><span class="slider-val">50%</span></div></div>
+                <div class="slider-row"><span class="appliance-name">Backlight</span><div class="slider-controls"><div class="mini-slider-track"><div class="mini-slider-fill" style="width:70%"></div></div><span class="slider-val">70%</span></div></div>
+                <div class="slider-row"><span class="appliance-name">Lamp 1</span><div class="slider-controls"><div class="mini-slider-track"><div class="mini-slider-fill" style="width:10%"></div></div><span class="slider-val">10%</span></div></div>
+                <div class="slider-row"><span class="appliance-name">Lamp 2</span><div class="slider-controls"><div class="mini-slider-track"><div class="mini-slider-fill" style="width:30%"></div></div><span class="slider-val">30%</span></div></div>
+                <div class="slider-row"><span class="appliance-name">Backlight</span><div class="slider-controls"><div class="mini-slider-track"><div class="mini-slider-fill" style="width:70%"></div></div><span class="slider-val">70%</span></div></div>
+                <div class="slider-row"><span class="appliance-name">Lamp 1</span><div class="slider-controls"><div class="mini-slider-track"><div class="mini-slider-fill" style="width:10%"></div></div><span class="slider-val">10%</span></div></div>
+                <div class="slider-row"><span class="appliance-name">Lamp 2</span><div class="slider-controls"><div class="mini-slider-track"><div class="mini-slider-fill" style="width:30%"></div></div><span class="slider-val">30%</span></div></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="row-2">
+          <section class="panel">
+            <h3>Device Power Consumption</h3>
+            <div class="power-list hide-scrollbar">
+              <div class="power-row">
+                <div class="power-left"><div class="power-icon-wrap"><img src="images/air-conditioner.png" class="power-icon" alt="" /></div><div><div class="power-name">Air Condition</div><div class="power-units">2 unit</div></div></div>
+                <span class="power-value">52kw</span>
+              </div>
+              <div class="power-row">
+                <div class="power-left"><div class="power-icon-wrap"><img src="images/light-bulb.png" class="power-icon" alt="" /></div><div><div class="power-name">Smart Lamp</div><div class="power-units">8 unit</div></div></div>
+                <span class="power-value">12kw</span>
+              </div>
+              <div class="power-row">
+                <div class="power-left"><div class="power-icon-wrap"><img src="images/monitor.png" class="power-icon" alt="" /></div><div><div class="power-name">Smart TV</div><div class="power-units">5 unit</div></div></div>
+                <span class="power-value">21kw</span>
+              </div>
+              <div class="power-row">
+                <div class="power-left"><div class="power-icon-wrap"><img src="images/speaker.png" class="power-icon" alt="" /></div><div><div class="power-name">Speaker</div><div class="power-units">1 unit</div></div></div>
+                <span class="power-value">42kw</span>
+              </div>
+              <div class="power-row">
+                <div class="power-left"><div class="power-icon-wrap"><img src="images/ceiling-fan.png" class="power-icon" alt="" /></div><div><div class="power-name">Fan</div><div class="power-units">3 unit</div></div></div>
+                <span class="power-value">19kw</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Occupant</h3>
+              <span class="see-all">See All -&gt;</span>
+            </div>
+            <div class="occupant-grid">
+              <div class="occupant-item"><img src="" class="occupant-photo" alt="Trisha" /><span class="occupant-name"></span></div>
+              <div class="occupant-item"><img src="" class="occupant-photo" alt="Chahat" /><span class="occupant-name"></span></div>
+              <div class="occupant-item"><img src="" class="occupant-photo" alt="Arjan" /><span class="occupant-name"></span></div>
+              <div class="occupant-item"><img src="" class="occupant-photo" alt="New_User" /><span class="occupant-name"></span></div>
+              <div class="occupant-item"><button class="occupant-add">+</button></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-right">
+        <section class="panel control-panel">
+
+          <div class="panel-head">
+            <h3 class="lg">Temperature</h3>
+            <h3 class="lg">:</h3>
+          </div>
+
+          <div class="dial-holder">
+            <div class="dial">
+              <div class="dial-ticks">
+                <div class="tick" style="transform: rotate(-270.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-261.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-252.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-243.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-234.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-225.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-216.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-207.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-198.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-189.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-180.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-171.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-162.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-153.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-144.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-135.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-126.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-117.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-108.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-99.0deg) translateY(118px);"></div>
+                <div class="tick" style="transform: rotate(-90.0deg) translateY(118px);"></div>
+              </div>
+              <div class="dial-fill" style="transform: rotate(18deg);"></div>
+              <div class="dial-face">
+                <span class="dial-mode">HEATING</span>
+                <span class="dial-temp">12</span>
+                <img src="images/leaf.png" alt="" class="dial-leaf" />
+              </div>
+            </div>
+          </div>
+
+          <div class="mode-row">
+            <button class="mode-btn active"><img src="images/heating.png" alt="" /><span>Heating</span></button>
+            <button class="mode-btn"><img src="images/cooling.png" alt="" /><span>Cooling</span></button>
+            <button class="mode-btn"><img src="images/dry.png" alt="" /><span>Dry</span></button>
+          </div>
+
+          <div class="stepper-row">
+            <button class="round-btn">-</button>
+            <button class="round-btn">+</button>
+          </div>
+
+          <div class="panel-head" style="margin-top:28px">
+            <h3 class="lg">Humidity</h3>
+            <h3 class="lg">60%</h3>
+          </div>
+          <div class="humidity-track"><div class="humidity-fill" style="width:60%"></div><div class="humidity-thumb" style="left:60%"></div></div>
+          <div class="preset-row">
+            <button class="preset-btn">Auto</button>
+            <button class="preset-btn">30%</button>
+            <button class="preset-btn active">60%</button>
+          </div>
+
+          <div class="panel-head" style="margin-top:28px">
+            <h3 class="lg">Air Quality</h3>
+            <h3 class="lg">Good</h3>
+          </div>
+          <div class="air-row">
+            <div class="air-card">
+              <div class="air-top"><img src="images/molecules.png" alt="" /><span>Moderate</span></div>
+              <div class="air-bottom"><span>CO<sub>2</sub></span><span>874<small> ppm</small></span></div>
+            </div>
+            <div class="air-card">
+              <div class="air-top"><img src="images/virus.png" alt="" /><span>Excellent</span></div>
+              <div class="air-bottom"><span>Pollutant</span><span>60<small> AQN</small></span></div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
