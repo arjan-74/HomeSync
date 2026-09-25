@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeSync Dashboard</title>
+
+  <!-- This line connects our CSS file to this HTML file -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- This loads a nice looking font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ============ LEFT SIDEBAR ============ -->
+    <aside class="sidebar">
+
+      <div class="logo-box">
+        <img src="https://res.cloudinary.com/kquvictp/image/upload/f_auto,q_auto/logo_mark" alt="HomeSync logo" class="logo-icon">
+        <div>
+          <div class="logo-title">HomeSync</div>
+          <div class="logo-subtitle">SMART LIVING</div>
+        </div>
+      </div>
+
+      <!-- Each link has a data-page attribute.
+           Our JavaScript at the bottom reads this to know
+           which page section to show. -->
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">▦</span> Dashboard
+        </a>
+        <a href="#" class="nav-item" data-page="rooms">
+          <span class="nav-icon">⌂</span> Rooms
+        </a>
+        <a href="#" class="nav-item" data-page="devices">
+          <span class="nav-icon">▭</span> Devices
+        </a>
+        <a href="#" class="nav-item" data-page="settings">
+          <span class="nav-icon">⚙</span> Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <img src="https://res.cloudinary.com/kquvictp/image/upload/f_auto,q_auto/sidebar_plant" alt="Plant decoration" class="sidebar-plant">
+        <p class="sidebar-quote">Smarter home,<br>happier you.</p>
+      </div>
+
+    </aside>
+
+    <!-- ============ MAIN MIDDLE SECTION ============ -->
+    <main class="main-content">
+
+      <!-- Top greeting + profile row (this stays the same on every page) -->
+      <div class="top-row">
+        <div>
+          <p class="greeting" id="page-eyebrow">Good morning,</p>
+          <h1 class="welcome-title" id="page-heading">Welcome back to HomeSync</h1>
+          <p class="welcome-subtitle" id="page-subheading">Control and monitor your connected home devices from one place.</p>
+        </div>
+
+        <div class="profile-box">
+          <span class="profile-avatar">👤</span>
+          <span class="profile-name">Trisha</span>
+          <span class="profile-arrow">▾</span>
+        </div>
+      </div>
+
+      <!-- ============================================
+           PAGE 1: DASHBOARD
+           This whole block is one "page". We show or
+           hide the full block with JavaScript.
+      ================================================ -->
+      <section id="page-dashboard" class="page-section active">
+
+      <!-- Hero banner image -->
+      <div class="hero-banner">
+        <img src="https://res.cloudinary.com/kquvictp/image/upload/f_auto,q_auto/hero_banner" alt="A smarter home for a better you" class="hero-image">
+        <div class="hero-text">
+          <h2>A smarter home<br>for a better you</h2>
+          <div class="hero-line"></div>
+        </div>
+      </div>
+
+      <!-- My Devices section -->
+      <div class="section-heading-row">
+        <h2 class="section-title">My Devices</h2>
+        <a href="#" class="view-all-link">View all →</a>
+      </div>
+
+      <div class="device-grid">
+
+        <!-- Device Card: Smart TV -->
+        <div class="device-card">
+          <div class="device-icon green-icon">🖥</div>
+          <div class="device-info">
+            <div class="device-name">Smart TV</div>
+            <div class="device-status"><span class="status-dot"></span> Offline</div>
+            <div class="device-usage">⚡ 5 kWh today</div>
+          </div>
+          <div class="device-controls">
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+            <button class="expand-btn">›</button>
+          </div>
+        </div>
+
+        <!-- Device Card: Heater -->
+        <div class="device-card">
+          <div class="device-icon orange-icon">🏛</div>
+          <div class="device-info">
+            <div class="device-name">Heater</div>
+            <div class="device-status"><span class="status-dot orange-dot"></span> Offline</div>
+            <div class="device-usage">⚡ 4 kWh today</div>
+          </div>
+          <div class="device-controls">
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+            <button class="expand-btn">›</button>
+          </div>
+        </div>
+
+        <!-- Device Card: AC -->
+        <div class="device-card">
+          <div class="device-icon blue-icon">❄</div>
+          <div class="device-info">
+            <div class="device-name">AC</div>
+            <div class="device-status"><span class="status-dot"></span> Offline</div>
+            <div class="device-usage">⚡ 6 kWh today</div>
+          </div>
+          <div class="device-controls">
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+            <button class="expand-btn">›</button>
+          </div>
+        </div>
+
+        <!-- Device Card: WiFi -->
+        <div class="device-card">
+          <div class="device-icon purple-icon">📶</div>
+          <div class="device-info">
+            <div class="device-name">WiFi</div>
+            <div class="device-status"><span class="status-dot"></span> Offline</div>
+            <div class="device-usage">⚡ 3 kWh today</div>
+          </div>
+          <div class="device-controls">
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+            <button class="expand-btn">›</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Save Energy banner -->
+      <div class="save-energy-card">
+        <div class="save-energy-icon">🌱</div>
+        <div class="save-energy-text">
+          <div class="save-energy-title">Save Energy</div>
+          <div class="save-energy-subtitle">Small changes make a big difference.</div>
+        </div>
+        <button class="save-energy-arrow">→</button>
+      </div>
+
+      </section>
+      <!-- END of Dashboard page -->
+
+
+      <!-- ============================================
+           PAGE 2: ROOMS
+      ================================================ -->
+      <section id="page-rooms" class="page-section">
+
+        <div class="section-heading-row">
+          <h2 class="section-title">My Rooms</h2>
+          <a href="#" class="view-all-link">Add room +</a>
+        </div>
+
+        <div class="room-grid">
+
+          <div class="room-card">
+            <div class="room-icon green-icon">🛋</div>
+            <div class="room-name">Living Room</div>
+            <div class="room-meta">4 devices · 22°C</div>
+          </div>
+
+          <div class="room-card">
+            <div class="room-icon blue-icon">🛏</div>
+            <div class="room-name">Bedroom</div>
+            <div class="room-meta">3 devices · 21°C</div>
+          </div>
+
+          <div class="room-card">
+            <div class="room-icon orange-icon">🍳</div>
+            <div class="room-name">Kitchen</div>
+            <div class="room-meta">5 devices · 23°C</div>
+          </div>
+
+          <div class="room-card">
+            <div class="room-icon purple-icon">🚿</div>
+            <div class="room-name">Bathroom</div>
+            <div class="room-meta">2 devices · 24°C</div>
+          </div>
+
+          <div class="room-card">
+            <div class="room-icon green-icon">💻</div>
+            <div class="room-name">Home Office</div>
+            <div class="room-meta">3 devices · 22°C</div>
+          </div>
+
+          <div class="room-card add-room-card">
+            <div class="room-icon add-room-icon">＋</div>
+            <div class="room-name">Add a room</div>
+            <div class="room-meta">Set up a new space</div>
+          </div>
+
+        </div>
+
+      </section>
+      <!-- END of Rooms page -->
+
+
+      <!-- ============================================
+           PAGE 3: DEVICES
+      ================================================ -->
+      <section id="page-devices" class="page-section">
+
+        <div class="section-heading-row">
+          <h2 class="section-title">All Devices</h2>
+          <a href="#" class="view-all-link">Add device +</a>
+        </div>
+
+        <div class="device-grid">
+
+          <div class="device-card">
+            <div class="device-icon green-icon">🖥</div>
+            <div class="device-info">
+              <div class="device-name">Smart TV</div>
+              <div class="device-status"><span class="status-dot"></span> Offline</div>
+              <div class="device-usage">⚡ 5 kWh today</div>
+            </div>
+            <div class="device-controls">
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+              <button class="expand-btn">›</button>
+            </div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-icon orange-icon">🏛</div>
+            <div class="device-info">
+              <div class="device-name">Heater</div>
+              <div class="device-status"><span class="status-dot orange-dot"></span> Offline</div>
+              <div class="device-usage">⚡ 4 kWh today</div>
+            </div>
+            <div class="device-controls">
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+              <button class="expand-btn">›</button>
+            </div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-icon blue-icon">❄</div>
+            <div class="device-info">
+              <div class="device-name">AC</div>
+              <div class="device-status"><span class="status-dot"></span> Offline</div>
+              <div class="device-usage">⚡ 6 kWh today</div>
+            </div>
+            <div class="device-controls">
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+              <button class="expand-btn">›</button>
+            </div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-icon purple-icon">📶</div>
+            <div class="device-info">
+              <div class="device-name">WiFi</div>
+              <div class="device-status"><span class="status-dot"></span> Offline</div>
+              <div class="device-usage">⚡ 3 kWh today</div>
+            </div>
+            <div class="device-controls">
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+              <button class="expand-btn">›</button>
+            </div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-icon green-icon">💡</div>
+            <div class="device-info">
+              <div class="device-name">Lamp</div>
+              <div class="device-status"><span class="status-dot on-dot"></span> Online</div>
+              <div class="device-usage">⚡ 1 kWh today</div>
+            </div>
+            <div class="device-controls">
+              <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="toggle-slider"></span>
+              </label>
+              <button class="expand-btn">›</button>
+            </div>
+          </div>
+
+          <div class="device-card">
+            <div class="device-icon orange-icon">🔊</div>
+            <div class="device-info">
+              <div class="device-name">Speaker</div>
+              <div class="device-status"><span class="status-dot"></span> Offline</div>
+              <div class="device-usage">⚡ 2 kWh today</div>
+            </div>
+            <div class="device-controls">
+              <label class="toggle-switch">
+                <input type="checkbox">
+                <span class="toggle-slider"></span>
+              </label>
+              <button class="expand-btn">›</button>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+      <!-- END of Devices page -->
+
+
+      <!-- ============================================
+           PAGE 4: SETTINGS
+      ================================================ -->
+      <section id="page-settings" class="page-section">
+
+        <div class="section-heading-row">
+          <h2 class="section-title">Settings</h2>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-group-title">Account</div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Profile name</div>
+              <div class="settings-row-desc">This is the name shown around HomeSync.</div>
+            </div>
+            <div class="settings-value">Trisha</div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Email address</div>
+              <div class="settings-row-desc">Used for alerts and account recovery.</div>
+            </div>
+            <div class="settings-value">trisha@homesync.com</div>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-group-title">Preferences</div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Push notifications</div>
+              <div class="settings-row-desc">Get notified about device activity.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Energy saving mode</div>
+              <div class="settings-row-desc">Automatically reduce usage during peak hours.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-row-title">Dark mode</div>
+              <div class="settings-row-desc">Switch the dashboard to a darker look.</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-group-title">Temperature unit</div>
+
+          <div class="temp-buttons settings-unit-buttons">
+            <button class="temp-btn active-temp-btn">Celsius °C</button>
+            <button class="temp-btn">Fahrenheit °F</button>
+          </div>
+        </div>
+
+      </section>
+      <!-- END of Settings page -->
+
+    </main>
+
+    <!-- ============ RIGHT SIDEBAR ============ -->
+    <!-- This only shows on the Dashboard page -->
+    <aside class="right-panel" id="right-panel">
+
+      <!-- Indoor Temperature card -->
+      <div class="panel-card">
+        <div class="panel-card-header">
+          <span class="panel-card-title">🌡 Indoor Temperature</span>
+          <span class="panel-card-arrow">›</span>
+        </div>
+
+        <div class="temperature-circle">
+          <div class="temperature-value">22°</div>
+          <div class="temperature-label">Current</div>
+        </div>
+
+        <div class="temp-buttons">
+          <button class="temp-btn active-temp-btn">☀ Heating</button>
+          <button class="temp-btn">❄ Cooling</button>
+        </div>
+      </div>
+
+      <!-- Energy Usage card -->
+      <div class="panel-card">
+        <div class="panel-card-header">
+          <span class="panel-card-title">⚡ Energy Usage</span>
+          <span class="panel-card-arrow">›</span>
+        </div>
+
+        <div class="energy-usage-box">
+          <div class="energy-usage-label">Total Usage</div>
+          <div class="energy-usage-row">
+            <div>
+              <div class="energy-usage-value">18.4 kWh</div>
+              <div class="energy-usage-change">↗ +12% vs. yesterday</div>
+            </div>
+            <img src="https://res.cloudinary.com/kquvictp/image/upload/f_auto,q_auto/energy_card_plant" alt="Energy usage graphic" class="energy-usage-image">
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- ============================================
+       SIMPLE PAGE-SWITCHING SCRIPT
+       This shows one page section at a time and
+       highlights the matching link in the sidebar.
+  ================================================ -->
+  <script>
+    // Text shown at the top of each page
+    var pageHeadings = {
+      dashboard: {
+        eyebrow: "Good morning,",
+        heading: "Welcome back to HomeSync",
+        subheading: "Control and monitor your connected home devices from one place."
+      },
+      rooms: {
+        eyebrow: "Your home,",
+        heading: "Rooms",
+        subheading: "See every room in your home and what's connected inside it."
+      },
+      devices: {
+        eyebrow: "Everything connected,",
+        heading: "Devices",
+        subheading: "Turn devices on or off and check how much energy they use."
+      },
+      settings: {
+        eyebrow: "Your account,",
+        heading: "Settings",
+        subheading: "Manage your profile, notifications, and preferences."
+      }
+    };
+
+    // Grab all the sidebar links and all the page sections
+    var navLinks = document.querySelectorAll(".nav-item");
+    var pageSections = document.querySelectorAll(".page-section");
+    var rightPanel = document.getElementById("right-panel");
+
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault(); // stop the link from jumping to the top of the page
+
+        var targetPage = link.getAttribute("data-page");
+
+        // Turn off "active" on every link, then turn it on for the one clicked
+        navLinks.forEach(function (item) {
+          item.classList.remove("active");
+        });
+        link.classList.add("active");
+
+        // Hide every page section, then show only the matching one
+        pageSections.forEach(function (section) {
+          section.classList.remove("active");
+        });
+        document.getElementById("page-" + targetPage).classList.add("active");
+
+        // The right panel (temperature + energy) only makes sense on the Dashboard
+        rightPanel.style.display = (targetPage === "dashboard") ? "flex" : "none";
+
+        // Update the top heading text for the page we're on
+        document.getElementById("page-eyebrow").textContent = pageHeadings[targetPage].eyebrow;
+        document.getElementById("page-heading").textContent = pageHeadings[targetPage].heading;
+        document.getElementById("page-subheading").textContent = pageHeadings[targetPage].subheading;
+      });
+    });
+  </script>
+
+</body>
+</html>
