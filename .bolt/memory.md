@@ -9,6 +9,7 @@
 ## Brand personality & voice
 
 - Educational/explanatory tone: user wants to learn concepts as we build (line-by-line explanations)
+- User prefers code that reads as human-written ("less AI"); keep it plain and short
 
 ## Visual design & UX direction
 
@@ -19,27 +20,31 @@
 ## Decisions, constraints & rationale
 
 - JSON file saving is a mandatory requirement (confirmed)
-- AI assistant is building backend only; the three people are handling the frontend
-- Current repo: single-page app (index.html) swapping 4 sections via JS + style.css; frontend team will split into separate HTML pages
-- Proposed backend structure: `server.js` (Express), `data/` (devices.json, rooms.json, users.json, messages.json, each starts as `[]`), `package.json`
-- Three-person split by file ownership to minimize conflicts:
-  - A (backend, AI-assisted): server.js, data/*.json, package.json
+- AI assistant built backend; only user's name goes on backend commits; teammates handle their own work
+- Deploy target: Render (user chose Render over Vercel)
+- Render free tier has read-only filesystem on restart/redeploy → JSON saving won't persist without paid persistent disk; acceptable for demo
+- Backend stack: Express + cors; dependencies installed (package.json, package-lock.json)
+- Backend files: server.js, data/*.json (devices, rooms, users, messages), helpers (storage, validation, password)
+- Password hashing: Node built-in scrypt; JSON never stores readable passwords
+- All endpoints tested locally: signup, login, devices CRUD, rooms CRUD, contact messages, profile edits
+- Profile edits require current password (no sessions yet); sessions + login rate limiting = next security step
+- CORS origin configurable via `CLIENT_ORIGIN` env var on Render
+- Three-person split by file ownership:
+  - A (backend, AI-assisted, user's commits only): server.js, data/*.json, package.json
   - B: devices.html/js, rooms.html/js (forms, validation, toggle, search/filter, delete w/ confirm)
   - C: login.html, settings.html, contact.html (auth forms, edit profile, contact form, wire up dark mode + °C/°F)
-- Vercel deploy has read-only filesystem; JSON saving only works locally via `npm start`
-- AI cannot make commits on behalf of teammates; each person works in own clone/branch
-- Proposed record fields (pending user confirmation):
+- Record fields:
   - Devices: name, room, type, on/off status
   - Rooms: name, number of devices
   - Users: name, email, hashed password
   - Contact messages: name, email, subject, message
-- Password hashing recommended (default: yes) so JSON never holds readable passwords
 
 ## Open questions & assumptions
 
-- Is Node.js with Express allowed by the course, or must it be plain Node without installs? (default proposed: Express)
+- Express allowed by course (assumed yes; user did not object)
 - Names and GitHub handles of the three contributors not yet provided
-- Where should backend code live — Bolt project synced to GitHub, or local clone? (default proposed: Bolt project → main)
-- Record field schemas pending user confirmation (defaults proposed above)
-- Password hashing approach pending user confirmation (default: yes)
-- Assumes instructor will accept local-only demo for JSON file saving
+- User's name needed for commit attribution and deploy docs
+- Render service URL needed to write deploy steps
+- Persistent disk on Render needed for long-term data retention (free tier resets)
+- Frontend not yet split into separate HTML pages (frontend team's task)
+- Assumes instructor will accept demo where JSON saving works but may reset on Render restart
