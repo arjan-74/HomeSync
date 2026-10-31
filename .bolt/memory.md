@@ -18,20 +18,28 @@
 
 ## Decisions, constraints & rationale
 
-- Current repo: single-page app (index.html) swapping 4 sections via JS + style.css; no backend, forms, or validation yet
-- Plan: split into separate HTML pages (index, rooms, devices, settings, login, contact) with real `<a href>` nav — satisfies "additional pages linked together"
-- Proposed structure: `js/` (common, devices, rooms, settings, auth, contact), `data/` (devices.json, rooms.json, users.json, messages.json, each starts as `[]`), `server.js` (Express), `package.json`
-- **Unresolved:** Backend approach — local Node/Express (literal "local JSON" requirement, works only via local `npm start`) vs Supabase (works in Bolt preview, hosted DB). User must confirm course allows Node and decide. Currently leaning Node/Express per evaluation wording.
+- JSON file saving is a mandatory requirement (confirmed)
+- AI assistant is building backend only; the three people are handling the frontend
+- Current repo: single-page app (index.html) swapping 4 sections via JS + style.css; frontend team will split into separate HTML pages
+- Proposed backend structure: `server.js` (Express), `data/` (devices.json, rooms.json, users.json, messages.json, each starts as `[]`), `package.json`
 - Three-person split by file ownership to minimize conflicts:
-  - A: server.js, data/*.json, page split, nav, common.js
-  - B: devices.html/js, rooms.html/js (add device/room forms, validation, toggle, search/filter, delete w/ confirm)
-  - C: login.html, settings.html, contact.html (auth forms w/ email regex + password strength, edit profile, contact form, wire up dark mode + °C/°F)
-- Vercel deploy has read-only filesystem; JSON saving only works locally
+  - A (backend, AI-assisted): server.js, data/*.json, package.json
+  - B: devices.html/js, rooms.html/js (forms, validation, toggle, search/filter, delete w/ confirm)
+  - C: login.html, settings.html, contact.html (auth forms, edit profile, contact form, wire up dark mode + °C/°F)
+- Vercel deploy has read-only filesystem; JSON saving only works locally via `npm start`
 - AI cannot make commits on behalf of teammates; each person works in own clone/branch
+- Proposed record fields (pending user confirmation):
+  - Devices: name, room, type, on/off status
+  - Rooms: name, number of devices
+  - Users: name, email, hashed password
+  - Contact messages: name, email, subject, message
+- Password hashing recommended (default: yes) so JSON never holds readable passwords
 
 ## Open questions & assumptions
 
-- Is Node/Express allowed by the course, or restricted to plain HTML/CSS/JS?
+- Is Node.js with Express allowed by the course, or must it be plain Node without installs? (default proposed: Express)
 - Names and GitHub handles of the three contributors not yet provided
-- Backend choice (local Node server vs Supabase) pending user decision
+- Where should backend code live — Bolt project synced to GitHub, or local clone? (default proposed: Bolt project → main)
+- Record field schemas pending user confirmation (defaults proposed above)
+- Password hashing approach pending user confirmation (default: yes)
 - Assumes instructor will accept local-only demo for JSON file saving
