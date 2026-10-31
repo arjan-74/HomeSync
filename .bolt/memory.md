@@ -20,19 +20,22 @@
 ## Decisions, constraints & rationale
 
 - JSON file saving is a mandatory requirement (confirmed)
-- AI assistant built backend; only user's name goes on backend commits; teammates handle their own work
-- Deploy target: Render (user chose Render over Vercel)
-- Render free tier has read-only filesystem on restart/redeploy → JSON saving won't persist without paid persistent disk; acceptable for demo
+- AI assistant built backend; only Arjan's name goes on backend commits; teammates handle their own work
+- Deploy target: Vercel (frontend currently live at homesync-lovat.vercel.app); Render no longer used
+- Vercel limitation: cannot persist JSON file writes between visits; live site cannot save data as-is
+- For evaluation: backend must run locally with `npm start`; website points at local backend
 - Backend stack: Express + cors; dependencies installed (package.json, package-lock.json)
 - Backend files: server.js, data/*.json (devices, rooms, users, messages), helpers (storage, validation, password)
 - Password hashing: Node built-in scrypt; JSON never stores readable passwords
 - All endpoints tested locally: signup, login, devices CRUD, rooms CRUD, contact messages, profile edits
 - Profile edits require current password (no sessions yet); sessions + login rate limiting = next security step
-- CORS origin configurable via `CLIENT_ORIGIN` env var on Render
-- Three-person split by file ownership:
-  - A (backend, AI-assisted, user's commits only): server.js, data/*.json, package.json
-  - B: devices.html/js, rooms.html/js (forms, validation, toggle, search/filter, delete w/ confirm)
-  - C: login.html, settings.html, contact.html (auth forms, edit profile, contact form, wire up dark mode + °C/°F)
+- CORS origin configurable via `CLIENT_ORIGIN` env var
+- README written with team names, run instructions, full API route list
+- Three-person split:
+  - Arjan Khandelwal (github.com/arjan-74): backend, AI-assisted, his commits only — server.js, data/*.json, package.json
+  - Chahat Yadav (github.com/chahatyadav25cse-ship-it): frontend (specific pages TBD)
+  - Trisha Alankar (github.com/trishaalankar19): frontend (specific pages TBD)
+- Original planned split for frontend: B = devices.html/js, rooms.html/js; C = login.html, settings.html, contact.html — unconfirmed who takes which
 - Record fields:
   - Devices: name, room, type, on/off status
   - Rooms: name, number of devices
@@ -42,9 +45,9 @@
 ## Open questions & assumptions
 
 - Express allowed by course (assumed yes; user did not object)
-- Names and GitHub handles of the three contributors not yet provided
-- User's name needed for commit attribution and deploy docs
-- Render service URL needed to write deploy steps
-- Persistent disk on Render needed for long-term data retention (free tier resets)
+- Which teammate (Chahat or Trisha) takes devices/rooms vs accounts/settings — not yet confirmed
+- Whether evaluator requires the live Vercel site to save data (if so, need different storage option)
+- Persistent storage on Vercel needed for long-term data retention (free tier resets)
 - Frontend not yet split into separate HTML pages (frontend team's task)
-- Assumes instructor will accept demo where JSON saving works but may reset on Render restart
+- Assumes instructor will accept demo where JSON saving works locally but not on Vercel
+- Sessions + login rate limiting deferred ("later")
