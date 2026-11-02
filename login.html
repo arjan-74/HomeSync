@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HomeSync - Login</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="auth-container">
+		<h1>Welcome to HomeSync</h1>
+		<p>Manage your smart home easily.</p>
+
+		<div class="auth-buttons">
+			<button type="button" onclick="showLogin()">Login</button>
+			<button type="button" onclick="showSignup()">Sign Up</button>
+		</div>
+
+		<form id="loginForm">
+			<h2>Login</h2>
+			<input type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+			<input type="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+			<button type="submit">Login</button>
+		</form>
+
+		<form id="signupForm" style="display: none;">
+			<h2>Create Account</h2>
+			<input type="text" name="name" placeholder="Full Name" autocomplete="name" required>
+			<input type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+			<input type="password" id="password" name="password" placeholder="Create password" autocomplete="new-password" required>
+			<p id="strength" aria-live="polite"></p>
+			<button type="submit">Sign Up</button>
+		</form>
+	</div>
+
+	<script>
+		function showLogin() {
+			document.getElementById("loginForm").style.display = "block";
+			document.getElementById("signupForm").style.display = "none";
+		}
+
+		function showSignup() {
+			document.getElementById("loginForm").style.display = "none";
+			document.getElementById("signupForm").style.display = "block";
+		}
+
+		document.getElementById("password").addEventListener("input", function () {
+			const password = this.value;
+			const strength = document.getElementById("strength");
+
+			if (password.length < 6) {
+				strength.textContent = "Weak Password";
+			} else if (password.length < 10) {
+				strength.textContent = "Medium Password";
+			} else {
+				strength.textContent = "Strong Password";
+			}
+		});
+	</script>
+</body>
+</html>

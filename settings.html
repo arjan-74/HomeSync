@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HomeSync - Settings</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="page">
+
+		<!-- SIDEBAR -->
+		<aside class="sidebar">
+			<div class="logo-title">HomeSync</div>
+			<nav class="nav-menu">
+				<a class="nav-item" href="index.html">🏠 Dashboard</a>
+				<a class="nav-item" href="devices.html">💡 Devices</a>
+				<a class="nav-item" href="rooms.html">🚪 Rooms</a>
+				<a class="nav-item active" href="settings.html">⚙️ Settings</a>
+				<a class="nav-item" href="contact.html">✉️ Contact</a>
+			</nav>
+		</aside>
+
+		<!-- MAIN -->
+		<main class="main-content">
+			<h1 class="welcome-title">Settings</h1>
+
+			<!-- PROFILE PHOTO -->
+			<div class="settings-card profile-top">
+				<div id="avatar" class="avatar"></div>
+				<div>
+					<h3 id="showName">Your Name</h3>
+					<input type="file" accept="image/*" onchange="savePhoto(this)">
+				</div>
+			</div>
+
+			<div class="settings-grid">
+
+				<!-- EDIT PROFILE -->
+				<div class="settings-card">
+					<h3 class="settings-group-title">Edit Profile</h3>
+					<input class="field" id="name" placeholder="Full name">
+					<input class="field" id="email" type="email" placeholder="Email">
+					<button class="save-btn" onclick="saveProfile()">Save</button>
+				</div>
+
+				<!-- CHANGE PASSWORD -->
+				<div class="settings-card">
+					<h3 class="settings-group-title">Change Password</h3>
+					<input class="field pass" type="password" id="newPass" placeholder="New password">
+					<input class="field pass" type="password" id="confirm" placeholder="Confirm password">
+					<label><input type="checkbox" onchange="showPass(this.checked)"> Show password</label>
+					<br><br>
+					<button class="save-btn" onclick="changePass()">Change</button>
+				</div>
+
+				<!-- PREFERENCES -->
+				<div class="settings-card">
+					<h3 class="settings-group-title">Preferences</h3>
+
+					<div class="settings-row">
+						<span>Dark mode</span>
+						<input type="checkbox" id="dark" onchange="saveDark()">
+					</div>
+
+					<div class="settings-row">
+						<span>Language</span>
+						<select id="lang" onchange="saveLang()">
+							<option value="en">English</option>
+							<option value="hi">Hindi</option>
+						</select>
+					</div>
+
+					<div class="settings-row">
+						<span>Temperature</span>
+						<select id="unit" onchange="saveUnit()">
+							<option value="C">°C</option>
+							<option value="F">°F</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- NOTIFICATIONS -->
+				<div class="settings-card">
+					<h3 class="settings-group-title">Notifications</h3>
+
+					<div class="settings-row">
+						<span>Email notifications</span>
+						<input type="checkbox" id="emailNotif" onchange="saveNotif()">
+					</div>
+
+					<div class="settings-row">
+						<span>Device alerts</span>
+						<input type="checkbox" id="deviceNotif" onchange="saveNotif()">
+					</div>
+				</div>
+			</div>
+
+			<!-- ACCOUNT -->
+			<div class="settings-card">
+				<h3 class="settings-group-title">Account</h3>
+				<button class="save-btn" onclick="logout()">Logout</button>
+				<button class="delete-btn" onclick="deleteAccount()">Delete account</button>
+			</div>
+		</main>
+	</div>
+
+	<script>
+		// ----- PROFILE -----
+		function showProfile() {
+			const name = localStorage.getItem("name") || "Your Name";
+			const photo = localStorage.getItem("photo");
+			const avatar = document.getElementById("avatar");
+
+			document.getElementById("showName").textContent = name;
+
+			if (photo) {
+				avatar.style.backgroundImage = "url(" + photo + ")";
+				avatar.textContent = "";
+			} else {
+				avatar.style.backgroundImage = "none";
+				avatar.textContent = name[0].toUpperCase();
+			}
+		}
+
+		function savePhoto(input) {
+			const reader = new FileReader();
+			reader.onload = function () {
+				localStorage.setItem("photo", reader.result);
+				showProfile();
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+
+		function saveProfile() {
+			const name = document.getElementById("name").value.trim();
+			const email = document.getElementById("email").value.trim();
+
+			if (name === "" || !email.includes("@")) {
+				alert("Enter a name and a valid email.");
+				return;
+			}
+			localStorage.setItem("name", name);
+			localStorage.setItem("email", email);
+			showProfile();
+			alert("Profile saved!");
+		}
+
+		// ----- PASSWORD -----
+		function changePass() {
+			const newPass = document.getElementById("newPass").value;
+			const confirm = document.getElementById("confirm").value;
+
+			if (newPass.length < 6) {
+				alert("Password must be at least 6 characters.");
+			} else if (newPass !== confirm) {
+				alert("Passwords do not match.");
+			} else {
+				localStorage.setItem("password", newPass);
+				alert("Password changed!");
+			}
+		}
+
+		function showPass(show) {
+			const boxes = document.querySelectorAll(".pass");
+			for (let i = 0; i < boxes.length; i++) {
+				boxes[i].type = show ? "text" : "password";
+			}
+		}
+
+		// ----- PREFERENCES -----
+		function saveDark() {
+			const on = document.getElementById("dark").checked;
+			localStorage.setItem("dark", on);
+			document.body.classList.toggle("dark", on);
+		}
+
+		function saveLang() {
+			localStorage.setItem("lang", document.getElementById("lang").value);
+		}
+
+		function saveUnit() {
+			localStorage.setItem("unit", document.getElementById("unit").value);
+		}
+
+		function saveNotif() {
+			localStorage.setItem("emailNotif", document.getElementById("emailNotif").checked);
+			localStorage.setItem("deviceNotif", document.getElementById("deviceNotif").checked);
+		}
+
+		// ----- LOGOUT + DELETE -----
+		function logout() {
+			localStorage.removeItem("loggedIn");
+			window.location.href = "login.html";
+		}
+
+		function deleteAccount() {
+			if (confirm("Delete your account? This cannot be undone.")) {
+				localStorage.clear();
+				window.location.href = "login.html";
+			}
+		}
+
+		// ----- LOAD SAVED VALUES -----
+		document.getElementById("name").value = localStorage.getItem("name") || "";
+		document.getElementById("email").value = localStorage.getItem("email") || "";
+		document.getElementById("dark").checked = localStorage.getItem("dark") === "true";
+		document.getElementById("lang").value = localStorage.getItem("lang") || "en";
+		document.getElementById("unit").value = localStorage.getItem("unit") || "C";
+		document.getElementById("emailNotif").checked = localStorage.getItem("emailNotif") === "true";
+		document.getElementById("deviceNotif").checked = localStorage.getItem("deviceNotif") === "true";
+		document.body.classList.toggle("dark", localStorage.getItem("dark") === "true");
+		showProfile();
+	</script>
+</body>
+</html>

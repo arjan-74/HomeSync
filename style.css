@@ -700,3 +700,163 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   LOGIN AND SIGNUP PAGE
+================================================ */
+.auth-container {
+  width: 400px;
+  margin: 70px auto;
+  padding: 35px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.auth-container h1 {
+  color: #1F3B2C;
+  margin-bottom: 10px;
+}
+
+.auth-container p {
+  color: #5C6B5E;
+  margin-bottom: 20px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.auth-container button {
+  background: #1F3B2C;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.auth-container button:hover {
+  background: #4C7A5A;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #D6DBD6;
+  border-radius: 8px;
+  outline: none;
+}
+
+.auth-container input:focus {
+  border-color: #4C7A5A;
+}
+
+.auth-container form h2 {
+  color: #1F3B2C;
+  margin-bottom: 20px;
+}
+
+#strength {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ============================================
+   SETTINGS PAGE (standalone)
+================================================ */
+.profile-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #4C7A5A center / cover;
+  color: #ffffff;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2 cards per row, so no empty space on the right */
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.settings-grid .settings-card {
+  margin-bottom: 0;
+}
+
+.field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #D6DBD6;
+  border-radius: 8px;
+}
+
+.save-btn,
+.delete-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: #1F3B2C;
+  color: #ffffff;
+}
+
+.delete-btn {
+  background: #FBE9E6;
+  color: #B3402F;
+  margin-left: 8px;
+}
+
+@media (max-width: 800px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   DARK MODE
+================================================ */
+body.dark { background: #121A15; color: #E6ECE7; }
+body.dark .settings-card { background: #1C2A21; }
+body.dark .welcome-title { color: #E6ECE7; }
+body.dark .field { background: #121A15; color: #E6ECE7; border-color: #3A4A3F; }
+
+/* ============================================
+   CONTACT PAGE
+================================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 16px;
+  align-items: start;
+}
+
+textarea.field {
+  min-height: 110px;
+  font-family: inherit;
+}
+
+@media (max-width: 800px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
