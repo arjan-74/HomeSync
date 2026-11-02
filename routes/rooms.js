@@ -1,27 +1,37 @@
 const express = require("express");
 const crypto = require("crypto");
+
 const { readRecords, writeRecords } = require("../lib/storage");
 const { checkText } = require("../lib/validate");
 
 const router = express.Router();
 
+// List every room along with a count of devices assigned to it.
 router.get("/", (req, res) => {
   const devices = readRecords("devices");
+
   const rooms = readRecords("rooms").map((room) => ({
     ...room,
     deviceCount: devices.filter((device) => device.room === room.name).length,
   }));
+
   res.json(rooms);
 });
 
+// Add a room. Names must be unique ignoring capital letters.
 router.post("/", (req, res) => {
   const { name } = req.body;
+
   const error = checkText(name, "Room name", 40);
   if (error) return res.status(400).json({ error });
 
   const rooms = readRecords("rooms");
   const trimmed = name.trim();
-  if (rooms.some((room) => room.name.toLowerCase() === trimmed.toLowerCase())) {
+
+  const isDuplicate = rooms.some(
+    (room) => room.name.toLowerCase() === trimmed.toLowerCase()
+  );
+  if (isDuplicate) {
     return res.status(409).json({ error: "A room with this name already exists" });
   }
 
@@ -30,14 +40,18 @@ router.post("/", (req, res) => {
     name: trimmed,
     createdAt: new Date().toISOString(),
   };
+
   rooms.push(room);
   writeRecords("rooms", rooms);
+
   res.status(201).json({ ...room, deviceCount: 0 });
 });
 
+// Remove a room by its id.
 router.delete("/:id", (req, res) => {
   const rooms = readRecords("rooms");
   const remaining = rooms.filter((room) => room.id !== req.params.id);
+
   if (remaining.length === rooms.length) {
     return res.status(404).json({ error: "Room not found" });
   }
